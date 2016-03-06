@@ -23,43 +23,61 @@
 <div class="divider"></div>
 <div class="container">
   <div class="row">
-    <ul class="collapsible" data-collapsible="accordion">
+    <ul class="collapsible popout" data-collapsible="accordion">
       {% for prod in items %}
-      <li class='description'>
+      <li id={{prod._id.toString()}} class='description'>
         <div class="collapsible-header">
-          <div class='row'>
-            <div class="col l3 s6">
-              Product: {{prod.name}}
+          <!-- <div class='row'> -->
+            <div class="collection">
+              <a href='#!'>
+                <span>Product: {{prod.name}}</span>
+                <span class="badge header-qty">{{prod.qty}}</span>
+              </a>
+            </div>
+            <!-- <div class="col l3 s6">
+              <input class="current-qty validate" type="number" value={{prod.qty}}></input>
             </div>
             <div class="col l3 s6">
-              Qty: {{prod.qty}}
+              <button name="setQty" value={{prod._id.toString()}} class="right-align waves-effect waves-light btn qty-btn">Update Qty</button>
             </div>
-            <form class="" action="/products/{{prod._id.toString()}}" method="post">
+            <div class="col l3 s6">
+              {% if prod.status === 'inactive' %}
+              <button name="setStatus" value={{prod._id.toString()}} class="red right-align waves-effect waves-light btn disc-btn">Activate</button>
+              {% else %}
+              <button name="setStatus" value={{prod._id.toString()}} class="right-align waves-effect waves-light btn disc-btn">Discontinue</button>
+              {% endif %}
+            </div> -->
 
-              <div class="col l3 s6">
-                <button class="right-align waves-effect waves-light btn">Update Qty</button>
-              </div>
-              <div class="col l3 s6">
-                <button class="right-align waves-effect waves-light btn">Discontinue</button>
-              </div>
-            </form>
+          <!-- </div> -->
+        </div>
+        <div class="collapsible-body container">
+          <div class="row">
+            <div class="col l6 s6 push-s1 push-l2">
+              <button type="button" name="delete" value={{prod._id.toString()}} class="waves-effect waves-light btn delete-btn alight-right">Delete</button>
+            </div>
+            <div class="col l6 s6 pull-s1">
+              {% if prod.status === 'inactive' %}
+              <button name="setStatus" value={{prod._id.toString()}} class="red right-align waves-effect waves-light btn disc-btn">Activate</button>
+              {% else %}
+              <button name="setStatus" value={{prod._id.toString()}} class="right-align waves-effect waves-light btn disc-btn">Discontinue</button>
+              {% endif %}
+            </div>
+            <div class="col l12 s12">
+              <span class="flow-text">
+                {{prod.desc}}
+              </span>
+            </div>
 
           </div>
-        </div>
-        <div class="collapsible-body">
           <div class="row">
-            <div class="col l8">
-              <p>
-                {{prod.desc}}
-              </p>
+
+            <div class="col l3 s6">
+              <input class="current-qty validate" type="number" value={{prod.qty}}></input>
             </div>
-            <div class="col l4">
-              <p>
-                <form class="deleteForm" action="/products/{{prod._id.toString()}}" method="post">
-                  <button type="submit" name="delete" class="waves-effect waves-light btn">Delete</button>
-                </form>
-              </p>
+            <div class="col l9 s6">
+              <button name="setQty" value={{prod._id.toString()}} class="waves-effect waves-light btn qty-btn">Update Qty</button>
             </div>
+
           </div>
         </div>
       </li>

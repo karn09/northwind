@@ -4,24 +4,7 @@ var Product = require('../models').Product;
 router.get('/', function(req, res) {
   res.render('index');
 });
-var items = [{
-    name: 'first',
-    qty: 1,
-    status: 'active',
-    desc: 'This is product one'
-  }, {
-    name: 'second',
-    qty: 2,
-    status: 'inactive',
-    desc: 'This is product two'
-  }, {
-    name: 'third',
-    qty: 3,
-    status: 'active',
-    desc: 'This is product three'
-  }
 
-];
 router.get('/products', function(req, res) {
   Product.find({})
   .then(function(items) {
@@ -43,14 +26,26 @@ router.post('/products/add', function(req, res) {
   res.redirect('/products');
 });
 
-router.post('/products/:id', function(req, res) {
-  console.log(req.body);
-  console.log(req)
-  res.redirect('/products')
+router.put('/products/update', function(req, res) {
+  // console.log(req.body)
+  var product = Product.findByIdAndUpdate(req.body.id, req.body);
+  product.then(function(item) {
+    res.json({
+      item: item
+    });
+  })
+  .catch(function(err) {
+    console.log('Update err: ' + err);
+  });
 });
-router.post('/products/delete', function(req, res) {
-  var product = Product.findbyId({
 
+router.get('/products/delete', function(req, res) {
+  var product = Product.findByIdAndRemove(req.query.id);
+  product.then(function(item) {
+    res.json({redirect: '/products'});
+  })
+  .catch(function(err) {
+    console.log('POST DELETE ERR: ' + err);
   });
 });
 

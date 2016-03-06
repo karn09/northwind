@@ -5680,66 +5680,60 @@ small {
   @media only screen and (min-width: 360px) {
     .flow-text {
       font-size: 1.2rem; } }
-  @media only screen and (min-width: 390px) {
+  @media only screen and (min-width: 393.33333px) {
     .flow-text {
       font-size: 1.224rem; } }
-  @media only screen and (min-width: 420px) {
+  @media only screen and (min-width: 426.66667px) {
     .flow-text {
       font-size: 1.248rem; } }
-  @media only screen and (min-width: 450px) {
+  @media only screen and (min-width: 460px) {
     .flow-text {
       font-size: 1.272rem; } }
-  @media only screen and (min-width: 480px) {
+  @media only screen and (min-width: 493.33333px) {
     .flow-text {
       font-size: 1.296rem; } }
-  @media only screen and (min-width: 510px) {
+  @media only screen and (min-width: 526.66667px) {
     .flow-text {
       font-size: 1.32rem; } }
-  @media only screen and (min-width: 540px) {
+  @media only screen and (min-width: 560px) {
     .flow-text {
       font-size: 1.344rem; } }
-  @media only screen and (min-width: 570px) {
+  @media only screen and (min-width: 593.33333px) {
     .flow-text {
       font-size: 1.368rem; } }
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 626.66667px) {
     .flow-text {
       font-size: 1.392rem; } }
-  @media only screen and (min-width: 630px) {
-    .flow-text {
-      font-size: 1.416rem; } }
   @media only screen and (min-width: 660px) {
     .flow-text {
+      font-size: 1.416rem; } }
+  @media only screen and (min-width: 693.33333px) {
+    .flow-text {
       font-size: 1.44rem; } }
-  @media only screen and (min-width: 690px) {
+  @media only screen and (min-width: 726.66667px) {
     .flow-text {
       font-size: 1.464rem; } }
-  @media only screen and (min-width: 720px) {
+  @media only screen and (min-width: 760px) {
     .flow-text {
       font-size: 1.488rem; } }
-  @media only screen and (min-width: 750px) {
+  @media only screen and (min-width: 793.33333px) {
     .flow-text {
       font-size: 1.512rem; } }
-  @media only screen and (min-width: 780px) {
+  @media only screen and (min-width: 826.66667px) {
     .flow-text {
       font-size: 1.536rem; } }
-  @media only screen and (min-width: 810px) {
+  @media only screen and (min-width: 860px) {
     .flow-text {
       font-size: 1.56rem; } }
-  @media only screen and (min-width: 840px) {
+  @media only screen and (min-width: 893.33333px) {
     .flow-text {
       font-size: 1.584rem; } }
-  @media only screen and (min-width: 870px) {
+  @media only screen and (min-width: 926.66667px) {
     .flow-text {
       font-size: 1.608rem; } }
-  @media only screen and (min-width: 900px) {
-    .flow-text {
-      font-size: 1.632rem; } }
-  @media only screen and (min-width: 930px) {
-    .flow-text {
-      font-size: 1.656rem; } }
   @media only screen and (min-width: 960px) {
     .flow-text {
-      font-size: 1.68rem; } }
+      font-size: 1.632rem; } }
   @media only screen and (max-width: 360px) {
     .flow-text {
       font-size: 1.2rem; } }
@@ -8531,6 +8525,9 @@ body {
 
 main {
   flex: 1 0 auto; }
+
+.collapsible-body {
+  padding-top: 5%; }
 
 .splash > h2 {
   position: absolute;

@@ -1,0 +1,72 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="container">
+  <form class="productform col s12" action="/products/add" method="post">
+    <div class="row">
+      <div class="input-field col s6">
+        <input placeholder="What would you like to add?" id="product_name" name="product_name" type="text" class="validate">
+        <label for="product_name">Product Name</label>
+      </div>
+      <div class="col s2 push-s4">
+        <button class="addbtn btn waves-effect waves-light" type="submit" name="action">Add
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <textarea id="prod_desc" name="product_desc" class="materialize-textarea validate"></textarea>
+        <label for="product_description">How would you describe your product?</label>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="divider"></div>
+<div class="container">
+  <div class="row">
+    <ul class="collapsible" data-collapsible="accordion">
+      {% for prod in items %}
+      <li class='description'>
+        <div class="collapsible-header">
+          <div class='row'>
+            <div class="col l3 s6">
+              Product: {{prod.name}}
+            </div>
+            <div class="col l3 s6">
+              Qty: {{prod.qty}}
+            </div>
+            <form class="" action="/products/{{prod._id.toString()}}" method="post">
+
+              <div class="col l3 s6">
+                <button class="right-align waves-effect waves-light btn">Update Qty</button>
+              </div>
+              <div class="col l3 s6">
+                <button class="right-align waves-effect waves-light btn">Discontinue</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+        <div class="collapsible-body">
+          <div class="row">
+            <div class="col l8">
+              <p>
+                {{prod.desc}}
+              </p>
+            </div>
+            <div class="col l4">
+              <p>
+                <form class="deleteForm" action="/products/{{prod._id.toString()}}" method="post">
+                  <button type="submit" name="delete" class="waves-effect waves-light btn">Delete</button>
+                </form>
+              </p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <div class="divider"></div>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

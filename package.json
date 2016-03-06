@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon -e js,css,scss,html app.js",
     "test": "nodemon app.js"
   },
   "repository": {
@@ -22,6 +23,8 @@
     "express": "^4.13.4",
     "mongoose": "^4.4.6",
     "morgan": "^1.7.0",
+    "mustache": "^2.2.1",
+    "node-sass-middleware": "^0.9.7",
     "swig": "^1.4.2"
   },
   "devDependencies": {

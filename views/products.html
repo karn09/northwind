@@ -1,12 +1,12 @@
 {% extends 'layout.html' %} {% block content %}
 <div class="container">
-  <form class="productform col s12" action="/products/add" method="post">
+  <form class="productform" action="/products/add" method="post">
     <div class="row">
       <div class="input-field col s6">
         <input placeholder="What would you like to add?" id="product_name" name="product_name" type="text" class="validate">
         <label for="product_name">Product Name</label>
       </div>
-      <div class="col s2 push-s4">
+      <div class="col s2 push-s2">
         <button class="addbtn btn waves-effect waves-light" type="submit" name="action">Add
           <i class="material-icons right">send</i>
         </button>
@@ -26,8 +26,12 @@
     <ul class="collapsible popout" data-collapsible="accordion">
       {% for prod in items %}
       <li id={{prod._id.toString()}} class='description'>
-        <div class="collapsible-header">
-          <!-- <div class='row'> -->
+        {% if prod.status === 'inactive' %}
+        <div class="collapsible-header red lighten-2">
+          {% else %}
+          <div class="collapsible-header">
+            {% endif %}
+            <!-- <div class='row'> -->
             <div class="collection">
               <a href='#!'>
                 <span>Product: {{prod.name}}</span>
@@ -48,43 +52,49 @@
               {% endif %}
             </div> -->
 
-          <!-- </div> -->
-        </div>
-        <div class="collapsible-body container">
-          <div class="row">
-            <div class="col l6 s6 push-s1 push-l2">
-              <button type="button" name="delete" value={{prod._id.toString()}} class="waves-effect waves-light btn delete-btn alight-right">Delete</button>
-            </div>
-            <div class="col l6 s6 pull-s1">
-              {% if prod.status === 'inactive' %}
-              <button name="setStatus" value={{prod._id.toString()}} class="red right-align waves-effect waves-light btn disc-btn">Activate</button>
-              {% else %}
-              <button name="setStatus" value={{prod._id.toString()}} class="right-align waves-effect waves-light btn disc-btn">Discontinue</button>
-              {% endif %}
-            </div>
-            <div class="col l12 s12">
-              <span class="flow-text">
+            <!-- </div> -->
+          </div>
+          <div class="collapsible-body container">
+            <div class="row">
+              <div class="section">
+
+                <div class="col l6 s6 push-s1 push-l2">
+                  <button type="button" name="delete" value={{prod._id.toString()}} class="waves-effect waves-light btn delete-btn alight-right">Delete</button>
+                </div>
+                <div class="col l6 s6 pull-s1">
+                  {% if prod.status === 'inactive' %}
+                  <button name="setStatus" value={{prod._id.toString()}} class="red right-align waves-effect waves-light btn disc-btn">Activate</button>
+                  {% else %}
+                  <button name="setStatus" value={{prod._id.toString()}} class="right-align waves-effect waves-light btn disc-btn">Discontinue</button>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="divider"></div>
+              <div class="col l12 s12">
+                <span class="flow-text">
                 {{prod.desc}}
               </span>
+              </div>
+
             </div>
 
+
+            <div class="row">
+
+              <div class="col l2 s6 push-l3">
+                <input class="current-qty validate" type="number" value={{prod.qty}}></input>
+              </div>
+              <div class="col l3 s6 push-l3">
+                <button name="setQty" value={{prod._id.toString()}} class="waves-effect waves-light btn qty-btn">Update Qty</button>
+              </div>
+
+            </div>
           </div>
-          <div class="row">
-
-            <div class="col l3 s6">
-              <input class="current-qty validate" type="number" value={{prod.qty}}></input>
-            </div>
-            <div class="col l9 s6">
-              <button name="setQty" value={{prod._id.toString()}} class="waves-effect waves-light btn qty-btn">Update Qty</button>
-            </div>
-
-          </div>
-        </div>
       </li>
       <div class="divider"></div>
       {% endfor %}
     </ul>
+    </div>
   </div>
-</div>
 
-{% endblock %}
+  {% endblock %}

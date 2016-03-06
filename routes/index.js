@@ -2,12 +2,10 @@ var router = require('express').Router();
 var Product = require('../models').Product;
 
 router.get('/', function(req, res) {
-  console.log(req.ip);
   res.render('index');
 });
 
 router.get('/products', function(req, res) {
-  console.log(req.ip);
   Product.find({})
   .then(function(items) {
     res.render('products', {items: items});

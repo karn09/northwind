@@ -42,7 +42,6 @@ $(document).ready(function() {
     var current = this.value;
     var btn = this;
     var setStatus = checkStatus($(this).text());
-    console.log($('#' + current));
     $.ajax({
       url: '/products/update',
       method: 'PUT',
@@ -72,7 +71,4 @@ $(document).ready(function() {
     }
   }
 
-  function redirect(success, error) {
-
-  }
 });

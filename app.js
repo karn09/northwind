@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+app.use(express.static(path.join(__dirname, './public')));
 
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
@@ -24,12 +25,14 @@ app.use(
   })
 );
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, './public')));
 app.use(bodyParser.urlencoded({ extended: false}));
-app.use(bodyParser.json());
+app.use(bodyParser.json());//needed?
 
+//define home route here.. 
+//define product routes below
 app.use('/', routes);
 
-app.listen(3000, function() {
+//separate out server.
+app.listen(process.env.PORT || 3000, function() {
   console.log('server started');
 });
